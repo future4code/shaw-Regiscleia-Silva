@@ -1,0 +1,2 @@
+# Apredizados da semana
+    Esta semana aprendi sobre **terminal** que é uma linha de comando, **git** que é uma ferramento para versionamento de codigos e **github** sistema de armazenamento e compartilhamento e hoje sobre **VsCode** no qual não tinha habilidade com nenhuma das ferramentas, porém consegui terminar todos os exercicios com a aulas dadas pela Labenu.
