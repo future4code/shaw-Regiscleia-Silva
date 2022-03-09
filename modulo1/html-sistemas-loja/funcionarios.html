@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Funcionários</title>
+    <link rel="stylesheet" type="text/css" href="loja.css">
 </head>
-<body>
+<body class="fundo">
     <div>
-        <p>Nome da loja</p>
+        <p id="titulo">Emporio Biquinis</p>
     </div>
     
     <div>
-        <a href="http://127.0.0.1:5500/index.html">Página Inicial</a>
-        <a href="http://127.0.0.1:5500/ctrl-estoque.html">Controle de Estoque</a>
-        <a href="http://127.0.0.1:5500/add-produto.html">Adicionar Produto</a>
-        <a href="http://127.0.0.1:5500/funcionarios.html">Funcionários</a>
+        <ul id="menus">
+            <li> <a id="pagina" href="http://127.0.0.1:5500/index.html">Página Inicial</a></li>
+            <li><a id="estoque"href="http://127.0.0.1:5500/ctrl-estoque.html" target="black">Controle de Estoque</a></li>
+            <li><a id="produtos"href="http://127.0.0.1:5500/add-produto.html" target="black">Adicionar Produto</a></li>
+            <li><a id= "funcionarios"href="http://127.0.0.1:5500/funcionarios.html" target="black">Funcionários</a></li>
+        </ul>
     </div>
 
     <h2>Funcionários</h2>
     <!-- Crie uma lista de funcionários usando as tags que você aprendeu hoje abaixo \/ -->
         <ol>
-            <li>
-        Marcelo
-         <li>regina</li>
-        <li>Luiz</li>
-        <li>Regiane</li>
+            <li id="funcio">
+            Marcelo
+             <li id="funcio">Regina</li>
+                <li id="funcio">Luiz</li>
+                <li id="funcio">Regiane</li>
             </li>
         </ol>
 </body>

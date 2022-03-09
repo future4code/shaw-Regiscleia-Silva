@@ -5,40 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adicionar Produto</title>
-</head>
-<body>
-    <div>
-        <p>Emporio dos biquinis</p>
-    </div>
-    
-    <div>
-        <a href="http://127.0.0.1:5500/index.html">Página Inicial</a>
-        <a href="http://127.0.0.1:5500/ctrl-estoque.html">Controle de Estoque</a>
-        <a href="http://127.0.0.1:5500/add-produto.html">Adicionar Produto</a>
-        <a href="http://127.0.0.1:5500/funcionarios.html">Funcionários</a>
-    </div>
+    <link rel="stylesheet" type="text/css" href="loja.css">
 
+</head>
+<body class="fundo">
+    <div>
+        <p id="titulo">Emporio dos biquinis</p>
+    </div>
     
-    <h2>Adicionar Produto</h2>
+    <div>
+        <ul id="menus">
+            <li> <a id="pagina" href="http://127.0.0.1:5500/index.html">Página Inicial</a></li>
+            <li><a id="estoque"href="http://127.0.0.1:5500/ctrl-estoque.html" target="black">Controle de Estoque</a></li>
+            <li><a id="produtos"href="http://127.0.0.1:5500/add-produto.html" target="black">Adicionar Produto</a></li>
+            <li><a id= "funcionarios"href="http://127.0.0.1:5500/funcionarios.html" target="black">Funcionários</a></li>
+        </ul>
+        </div>
+
+    <div>
+    <h2 id="produtos">Adicionar Produto</h2>
     <form action="">
-        <div>
+        <div id="formulario">
             <label for="link-foto">Link para foto: </label>
             <input type="url" id="link-foto" name="link-foto">
         </div>
         
-        <div>
+        <div id="formulario">
             <label for="descricao">Descrição do produto: </label>
             <!-- Adicione o id apropriado para o input abaixo -->
             <input type="text" id="descricao" name="descrição">
         </div>
         
-        <div>
+        <div id="formulario">
             <label for="preco">Preço (em R$): </label>
             <!-- Adicione o id apropriado e o type para receber números abaixo -->
             <input type="number" id="preco" name="preço">
         </div>
         
-        <div>
+        <div id="formulario">
             
             <!-- Preencha as propriedades necessárias para os elementos abaixo -->
             <label for = "controle de estoque" >Quantidade disponível: </label>
@@ -51,6 +55,6 @@
         </div>
 
     </form>
-
+</div>
 </body>
 </html>
