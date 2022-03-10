@@ -108,6 +108,9 @@ table {
     width: 60%;
     margin: 0 auto;
 }
+td{
+    text-align: center;
+}
 
 td button:active{
     background-color: #fadf63;
