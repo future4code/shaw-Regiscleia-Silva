@@ -109,12 +109,18 @@ table {
     margin: 0 auto;
 }
 
-td button {
+td button:active{
     background-color: #fadf63;
     width: 150px;
     height: 30px;
     border-radius: 5px;
     color: black;
+    color:aliceblue
+
+}
+td button:hover{
+    background-color: black;
+    color: aliceblue;
 }
 
 .container-do-search {
