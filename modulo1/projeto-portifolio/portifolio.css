@@ -1,0 +1,41 @@
+
+body{
+    background-image:url(https://img.freepik.com/vetores-gratis/fundo-de-conceito-futuro-tecnologia-cyber-circuito-rosa_42077-4099.jpg?w=740);
+   width: auto;
+   height: auto;
+}
+
+
+#menu ul li{
+    display:inline-block;
+    color: bisque;
+    padding: 50px;
+    background-color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+   
+img{
+    border: 5px solid black;
+    border-radius: 200px;
+    margin:0 auto;
+    padding:0px;
+    margin-left: 70%;
+}
+
+h1, h2{
+    color: bisque;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 50px;
+}   
+
+p{
+    color: bisque; 
+    margin-top: 10px;
+}
+#botao_voltar{
+    padding: 1% 2%;
+    color: bisque;
+    background-color: black;
+    
+}
