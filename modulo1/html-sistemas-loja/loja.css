@@ -1,0 +1,102 @@
+h1{
+    background-color: blueviolet;
+    color : pink;
+    padding: 10%
+}
+#logon{
+    color: red;
+    margin-left: auto ;
+    margin-right: auto;
+    width: 20em;
+    background-color: bisque 
+}
+
+#pagina{
+    color: blue;
+    padding:5%;
+    margin-left: 10%;
+    background-color: aqua;
+}
+#estoque{
+    color: red;
+    padding:5%;
+    background-color:antiquewhite;
+}
+#produtos{
+    color: orangered;
+    padding: 5%;
+    
+    background-color:rgb(238, 130, 130) ;
+}
+#funcionarios{
+    color: green;
+    padding: 5%;
+    margin-right: 10%;
+    background-color:yellow ;
+}
+h2{
+    color:black;
+    padding:5% ;
+}
+ul#menus li{
+    display: inline;
+}
+.sociais{
+    color: rgb(100, 124, 15);
+    display: block;
+}
+th#foto{
+    background-color:black;
+    color: beige;
+    
+}
+th#descricao{
+    background-color: lightcoral;
+
+}
+th#preco{
+    background-color: lightcoral;
+
+}
+th#quantidade{
+    background-color: lightcoral;
+
+}
+#produtos{
+    color: blue;
+    margin-top: 10%;
+}
+#formulario{
+    background-color: black;
+    color: beige;
+    padding: 1%;
+}
+button{
+    background-color: crimson;
+}
+#titulo{
+    color: rgb(119, 3, 42);
+}
+h2{
+    margin: 5%;
+}
+#funcio{
+background-color: black;
+color: blanchedalmond;
+margin:1%;
+margin-left: 10%;
+margin-right: 10%;
+}
+#foto-pra{
+    margin-top: 5%;
+}
+.fundo{
+     background-size: cover;
+     background-color:rgb(236, 228, 236);
+     background-image: url("https://img.elo7.com.br/product/zoom/353D2C8/fundo-fotografico-em-tecido-verao-2-60x1-50m-3d-tecido.jpg")
+     ;
+ }
+ .inicial{
+     background-color: rgb(238, 201, 238);
+    background-size: cover;
+    }
