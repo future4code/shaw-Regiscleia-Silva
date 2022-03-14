@@ -80,8 +80,28 @@ const login = (usuarioSenha) => {
 console.log(login(password))
 // Exercício 5----------------------------------------------------------------------------------------------------
 
-/*const primeiraDose = () => {
+let nomePaciente = prompt("digite seu nome")
+let vacina = prompt("qual vacina que você tomou ?")
 
+
+
+const primeiraDose = () => {
+
+let tempo;
+let data = "14/03/2022"
+
+if (vacina == "Coronavac"){
+    tempo = 28
+
+}else if(vacina == "Astrazenica" || vacina =="Pfizer"){
+ tempo = 90
+
+}  
+
+
+let mensagem = `Ola ${nomePaciente}! A proxima dose de ${vacina} é daqui ${tempo}
+dias. Compareça no posto na dara ${data}`
+return mensagem
     //  Sua lógica aqui
 
 
@@ -91,7 +111,7 @@ console.log(primeiraDose())
 
 // LOOP+CONDICIONAL
 
-// Exercício 6 -------------------------------------------------------------------------------------
+/*// Exercício 6 -------------------------------------------------------------------------------------
 
 const segundaDose = (nomeDoUsuario) => {
     const usuarios = [
