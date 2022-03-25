@@ -1,0 +1,39 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  color: bisque;
+}
+
+#root {
+
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-image: url(./img/imagem-whatslab.jpg);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid black;
+  max-width: 600px;
+}
+
+.chat {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5em;
+}
+
+.msg {
+ color: aliceblue;
+} 
+
