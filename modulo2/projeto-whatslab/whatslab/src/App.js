@@ -1,15 +1,60 @@
 import React from "react";
 import "./App.css";
-//import styled from "styled-components";
+import styled from "styled-components";
+import BalaoMensagem from "./components/BalaoMensagem/BalaoMensagem";
+import botao from "./img/enviar-correio.png";
+
+const Titulo = styled.h1`
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  color: violet;
+  background: bisque;
+`;
+const Container = styled.div`
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid black;
+  max-width: 600px;
+`;
+
+const CampoMensagem = styled.div`
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5em;
+`;
+
+const InputContainer = styled.div`
+  display: grid;
+  grid-template-columns: 100px 1fr 50px;
+  column-gap: 5px;
+  background-color: bisque;
+  height: 60px;
+  padding: 10px;
+`;
+const InputMsg = styled.input`
+  border-radius: 50px;
+  border: none;
+`;
+const Botao = styled.button`
+height: 3em;
+width: 3em;
+border:none;
+background:none;
+cursor:pointer;
+`
+const ImagemB = styled.img`
+height: 2em;
+width: 2.5em;
+
+`
 
 class App extends React.Component {
   state = {
-    Usuarios: [
-      {
-        nome: "",
-        mensagem: "",
-      },
-    ],
+    Usuarios: [],
 
     valorInputNome: "",
     valorInputMensagem: "",
@@ -35,34 +80,31 @@ class App extends React.Component {
 
   render() {
     const mensagem = this.state.Usuarios.map((usuario) => {
-      return (
-        <div className="msg">
-          <div>{usuario.nome}</div>
-          <div>{usuario.mensagem}</div>
-        </div>
-      );
+      return <BalaoMensagem nome={usuario.nome} conteudo={usuario.mensagem} />;
     });
 
     return (
-        <div className="container">
-          <h1>whatslab</h1>
-          <div className="chat">{mensagem}</div>
-          <div >
-            <input
-              className="inputnome"
-              value={this.state.valorInputNome}
-              onChange={this.onChangeInputNome}
-              placeholder={"Usuario"}
-            />
-            <input
-              className="inputnome"
-              value={this.state.valorInputMensagem}
-              onChange={this.onChangeInputMensagem}
-              placeholder={"mensagem"}
-            />
-            <button onClick={this.adicionaMensagem}>Enviar</button>
-          </div>
-        </div>
+      <Container>
+        <Titulo>whatslab</Titulo>
+        <CampoMensagem className="background">{mensagem}</CampoMensagem>
+        <InputContainer>
+          <InputMsg
+            value={this.state.valorInputNome}
+            onChange={this.onChangeInputNome}
+            placeholder={"Usuario"}
+          />
+          <InputMsg
+            value={this.state.valorInputMensagem}
+            onChange={this.onChangeInputMensagem}
+            placeholder={"mensagem"}
+          />
+          
+          <Botao  onClick={this.adicionaMensagem}>
+            <ImagemB src={botao}/>
+          </Botao >
+          
+        </InputContainer>
+      </Container>
     );
   }
 }
