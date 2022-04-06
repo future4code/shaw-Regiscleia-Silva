@@ -1,6 +1,30 @@
 import axios from "axios";
 import React from "react";
 import Inicial from "./Inicial";
+import styled from "styled-components";
+import DetalhesUsuarios from "./DetalhesUsuarios";
+
+const ListaUsuarios = styled.ul`
+    padding: 1em;
+    list-style-type: none;
+`
+const ContainerBotao = styled.div`
+    display:flex;
+    flex-direction: column;
+`
+const Remove = styled.button`
+    border:none;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius:50%;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #04AA6D;
+        color: white;
+    }
+`
 
 const headers = {
     headers: {
@@ -10,7 +34,9 @@ const headers = {
 
 class Segunda extends React.Component {
     state = {
-        usuarios: []
+        usuarios: [],
+        usuario: {},
+        tela: 'listagem'
     };
 
     componentDidMount() {
@@ -46,24 +72,53 @@ class Segunda extends React.Component {
         this.props.onBack();
     }
 
+    detalhesDoUsuario = (id) => {
+        const urlGet = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+        axios.get(urlGet, headers)
+            .then((res) => {
+                this.setState({ usuario: res.data });
+                this.setState({ tela: 'detalhes' })
+            }).catch((err) => {
+                console.log(err.message)
+            });
+    }
 
     render() {
-
-        const componenteUsuarios = this.state.usuarios.map((usuario) => {
-            return <li key={usuario.id}>{usuario.name}
-                <span onClick={() => this.deletarUsuario(usuario.id)}>X</span>
-            </li>;
-        });
         return (
-            <div>
-                <label>
-                    <ul>
-                        {componenteUsuarios}
-                    </ul>
+            <>
+                {this.state.tela === 'detalhes' ? <DetalhesUsuarios usuario={this.state.usuario} /> :
+                    <ContainerBotao>
+                        <h3>Lista de usuários</h3>
 
-                </label>
-                <button onClick={this.back}>Voltar</button>
-            </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Remover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {this.state.usuarios.map(user => {
+                                    return (
+                                        <tr>
+                                            <td>
+                                                <span onClick={() => this.detalhesDoUsuario(user.id)}>{user.name}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <Remove onClick={() => this.deletarUsuario(user.id)}>X</Remove>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                        <hr></hr>
+
+                    </ContainerBotao>
+                }
+            </>
         )
     }
 }

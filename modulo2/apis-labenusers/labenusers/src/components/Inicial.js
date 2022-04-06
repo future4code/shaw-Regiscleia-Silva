@@ -1,5 +1,20 @@
 import React from "react";
 import axios from 'axios';
+import styled from "styled-components";
+
+
+const ContainerInputs = styled.div`
+display:flex;
+flex-direction: column;
+padding:20px
+
+`
+const Input =styled.input`
+padding-top : 10px;
+margin:5px;
+`
+
+
 
 const headers = {
     headers: {
@@ -50,12 +65,14 @@ class Inicial extends React.Component {
 
     render() {
         return (
-            <div>
-                
-                <input type={'text'} placeholder={'Nome'} value={this.state.nome} onChange={this.onChangeNomeInput}></input>
-                <input type={'email'} placeholder={'Email'} value={this.state.email} onChange={this.onChangeEmailInput}></input>
-                <input type={'submit'} value={'Cadastrar'} onClick={this.createUser}></input>
-            </div>
+            <ContainerInputs>
+                <h3>Cadastro</h3>
+                <Input type={'text'} placeholder={'Nome'} value={this.state.nome} onChange={this.onChangeNomeInput}></Input>
+                <Input type={'email'} placeholder={'Email'} value={this.state.email} onChange={this.onChangeEmailInput}></Input>
+                <Input type={'submit'} value={'Cadastrar'} onClick={this.createUser}></Input>
+
+
+            </ContainerInputs>
         )
     }
 }
