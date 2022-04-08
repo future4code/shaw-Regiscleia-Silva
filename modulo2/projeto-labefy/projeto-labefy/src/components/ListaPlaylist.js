@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from "react";
 import DadosPrincipais from "./DadosPrincipais";
+import PlayListCard from "./PlayListCard";
+
 
 const headers = {
     headers: {
@@ -54,19 +56,21 @@ class ListaPlaylist extends React.Component {
     render() {
 
         const listas = this.state.todasPlaylists.map((lista) => {
-            return <div>
-                <button key={lista.id} onClick={() => this.irDetalhes(lista.id)}>Detalhar</button>
-                <p>{lista.name}</p>
-                <button onClick={() => this.deletarPlaylist(lista.id)}>X</button></div>
+            return <PlayListCard key={lista.id} playlist={lista} pageDetalhes={this.props.pageDetalhes} />
         })
 
         return (
             <div>
-                <h4>Lista de playlist</h4>
-                {listas}
-                {this.state.playlistId !== "" &&
-                    <DadosPrincipais id={this.state.playlistId} />}
-
+                <h4>Playlists</h4>
+                <div className="playlists">
+                    <div className="playlist-card">
+                        <div className="container" onClick={this.props.irParaPlaylistForm}>
+                            <h1>+</h1>
+                        </div>
+                        <a href="#" onClick={this.props.irParaPlaylistForm}> Nova Playlist</a>
+                    </div>
+                    {listas}
+                </div>
             </div>
 
         )
