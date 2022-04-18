@@ -1,0 +1,30 @@
+body{
+  background-color: aquamarine;
+ 
+  
+}
+
+ul  {
+  list-style-type: none;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:hover {background-color: lightgray;}
+
