@@ -1,18 +1,63 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { ThemeConsumer } from "styled-components";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const ContainerLista = styled.div`
-display: flex;
-flex-direction: center;
+
 border: 1px solid black;
-height: 100%;
-width: 50%;
-margin:0 auto;
+padding:.2em;
+
 }
-button{
-    margin-top:80%;
+
+button {
+  border: none;
+  background:none;
+  font-size: 1em;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  &:hover {
+    background: lightgray;
+  }
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    color: purple;
+  }
+}
+
+img {
+  height:40px;
+width: 40px;
+border-radius:50%;
+margin-right: 1em;
+}
+ul {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+
+  li{
+margin:0.5em;
+display:flex;
+align-items: center;
+cursor:pointer;
+padding:0.5em;
+&:hover{
+  background:lightgray;
+}
+
+  }
 }
 `;
 const aluno = "regiscleia-shaw";
@@ -32,19 +77,24 @@ const ListaMatches = (props) => {
   }, []);
 
   return (
-    <div>
       <ContainerLista>
         <header>
-          <h1>astroMatch</h1>
-          <button onClick={() => props.renderizacao("Profile")}>voltar</button>
+          <h3>astromatch</h3>
+          <button onClick={() => props.renderizacao("Profile")}>
+            <FontAwesomeIcon icon={faUser} />
+          </button>
         </header>
         <ul>
           {matches.map((matche) => {
-            return <li>{matche.name}</li>;
+            return (
+              <li key={matche.id}>
+                <img src={matche.photo} alt="perfil" />
+                {matche.name}
+              </li>
+            );
           })}
         </ul>
       </ContainerLista>
-    </div>
   );
 };
 export default ListaMatches;
