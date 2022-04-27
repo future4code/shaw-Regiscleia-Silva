@@ -1,24 +1,20 @@
-  import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-
-export const  ListTripsPage =()=> {
+export const ListTripsPage = () => {
   const navigate = useNavigate();
-  
-  const pageInscrever =()=>{
-    navigate ("/trips/application")
-  }
+
+  const pageInscrever = () => {
+    navigate("/trips/application");
+  };
   const Voltar = () => {
-    navigate("-1");
-    return (
-      <div >
+    navigate(-1);
+  };
+  return (
+    <div>
+      <p>Lista de Viagens</p>
 
-          <p>Lista de Viagens</p>
-
-
-          <button onChange={Voltar}>Voltar</button>
-          <button onChange={pageInscrever}>inscreva-se</button>
-      </div>
-    );
-  }
-}
+      <button onClick={Voltar}>Voltar</button>
+      <button onClick={pageInscrever}>inscreva-se</button>
+    </div>
+  );
+};
