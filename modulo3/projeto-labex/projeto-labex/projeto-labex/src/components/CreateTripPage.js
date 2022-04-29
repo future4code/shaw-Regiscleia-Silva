@@ -17,7 +17,7 @@ export const CreateTripPage = () => {
 
   const cadastrar = (event) => {
     event.preventDefault();
-    createTrip();  
+    createTrip();
   };
 
   const inicial = () => {
@@ -35,15 +35,17 @@ export const CreateTripPage = () => {
     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`;
     const token = localStorage.getItem("token");
     const headers = {
-      auth: token,
+      headers: {
+        auth: token,
+      },
     };
 
     axios
-      .post(url, form)
+      .post(url, form, headers)
       .then((response) => {
         cleanFields();
         alert("Ação realizada com sucesso");
-        navigate("/admin/trips/list")
+        navigate("/admin/trips/list");
       })
       .catch((err) => {
         console.log(err);
@@ -56,7 +58,7 @@ export const CreateTripPage = () => {
       <form onSubmit={cadastrar}>
         <input
           name="name"
-          type={'text'}
+          type={"text"}
           value={form.name}
           placeholder="nome"
           onChange={onChange}

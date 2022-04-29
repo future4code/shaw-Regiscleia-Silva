@@ -2,6 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useForm from "../hooks/useForm";
+import styled from "styled-components";
+import { Button, ButtonGroup } from '@chakra-ui/react'
+
+const ContainerPrincipal = styled.div`
+display: flex;
+flex-direction: center;
+ 
+input{
+  align-center: center;
+  height: 20em;
+  widht: 3em;
+}
+`
 
 
 
@@ -43,7 +56,8 @@ export const LoginPage = () => {
   };
 
   return (
-    <div>
+    
+      <ContainerPrincipal>
       <h2>Login ADM</h2>
       <form onSubmit={cadastrar}>
         <input
@@ -64,9 +78,10 @@ export const LoginPage = () => {
           required
           
         />
-        <button onClick={pageVoltar}>Voltar </button>
-        <button>Entrar</button>
+        <Button colorScheme='blue' onClick={pageVoltar}>Voltar </Button>
+        <Button>Entrar</Button>
       </form>
-    </div>
+      </ContainerPrincipal>
+   
   );
 };

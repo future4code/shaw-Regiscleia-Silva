@@ -1,4 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { Button, ButtonGroup, Flex, Stack } from '@chakra-ui/react'
+
+const ContaneirPrincipal = styled.div`
+p{
+  text align:center;
+}
+`
+
 
 export const HomePages = () => {
   const navigate = useNavigate();
@@ -11,11 +20,15 @@ export const HomePages = () => {
   };
 
   return (
-    <div>
+    <ContaneirPrincipal>
+<Flex justify={"center"} >
       <p>Labex</p>
-
-      <button onClick={pageViagens}>Viagens</button>
-      <button onClick={pageAdm}>Area ADM</button>
-    </div>
+      
+      <Stack spacing={4} direction='row' align='center'>
+      <Button colorScheme='green' size='lg' variant='solid'  onClick={pageViagens}>Viagens</Button>
+      <Button colorScheme='green' size='lg'onClick={pageAdm}>Area ADM</Button>
+    </Stack>
+    </Flex>
+    </ContaneirPrincipal>
   );
 };

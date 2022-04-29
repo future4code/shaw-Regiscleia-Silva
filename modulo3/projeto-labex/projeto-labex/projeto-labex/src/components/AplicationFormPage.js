@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const AplicationFormPage = () => {
   const [trips, setTrips] = useState([]);
-  const [paises, setPaises] = useState([])
+  const [paises, setPaises] = useState([]);
 
   const navigate = useNavigate();
 
@@ -15,19 +15,29 @@ export const AplicationFormPage = () => {
     applicationText: "",
     profession: "",
     country: "",
-    trip:""
+    trip: "",
   });
 
   const cadastrar = (event) => {
     event.preventDefault();
-    console.log("cadastrado", form);
+    
+    const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/regiscleia-dias-shaw/trips/${form.trip}/apply`
+    axios
+    .post(url,form)
+    .then((response)=>{
+      console.log(response.data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
     cleanFields();
   };
 
   useEffect(() => {
     getTrips();
-    getCountries ();
+    getCountries();
   }, []);
+  
   const getTrips = () => {
     const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/regiscleia-dias-shaw/trips`;
     const token = localStorage.getItem("token");
@@ -46,22 +56,19 @@ export const AplicationFormPage = () => {
       });
   };
 
-
   const getCountries = () => {
     const url = `https://servicodados.ibge.gov.br/api/v1/paises`;
-   
 
     axios
       .get(url)
       .then((response) => {
-        const paises = response.data.map(pais=> pais.nome.abreviado)
-        setPaises(paises)
+        const paises = response.data.map((pais) => pais.nome.abreviado);
+        setPaises(paises);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
 
   const pagevolta = () => {
     navigate(-1);
@@ -70,9 +77,8 @@ export const AplicationFormPage = () => {
   return (
     <div>
       <h2>Increva-se</h2>
-      <form onSubmit={cadastrar}> 
-
-        <select name ="trip" value={form.trip} onChange={onChange} required>
+      <form onSubmit={cadastrar}>
+        <select name="trip" value={form.trip} onChange={onChange} required>
           <option>Escolha uma viagem</option>
           {trips.map((trip) => {
             return (
@@ -122,12 +128,17 @@ export const AplicationFormPage = () => {
           pattern={"^.{10,}$"}
           title={"Minimo 10 caracteres"}
         />
-        <select name="country" value={form.country} onChange={onChange} required>
-          <option > Escolha um Pais </option>
-          {paises.map((pais,index) => {
+        <select
+          name="country"
+          value={form.country}
+          onChange={onChange}
+          required
+        >
+          <option> Escolha um Pais </option>
+          {paises.map((pais, index) => {
             return (
               <option value={pais} key={index}>
-                {pais} 
+                {pais}
               </option>
             );
           })}
