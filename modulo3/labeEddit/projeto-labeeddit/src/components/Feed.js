@@ -1,21 +1,35 @@
-import react from "react";
+import react, { useContext } from "react";
 import axios from "axios";
 import { login } from "../coodinator/Coodinator";
-import { Box, Button, ButtonGroup, Flex, Badge } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Flex,
+  Badge,
+  Textarea,
+  Input,
+  Divider,
+  Stack,
+  Skeleton,
+} from "@chakra-ui/react";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "./constats/urls";
 import useProtectsPage from "../hooks/useProtectsPage";
-import {
-  faArrowUp,
-  faArrowDown,
-  faMessage,
-} from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useForm from "../hooks/useForm";
+import { PostStateContext } from "../global/PostStateContext";
+import PostCard from "./PostCard/PostCard";
 
 const Feed = () => {
   //useProtectsPage();
+
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [form, onChange, clear] = useForm({ title: "", body: "" });
 
   const headers = {
     headers: {
@@ -28,65 +42,122 @@ const Feed = () => {
   }, []);
 
   const getPost = () => {
+    setLoading(true);
     axios
-      .get(`${BASE_URL}/posts`, headers)
+      .get(`${BASE_URL}/posts?page=${page}&size=10`, headers)
       .then((response) => {
-        setPosts(response.data);
+        setLoading(false);
+        setPosts((currentList) => [...currentList, ...response.data]);
+      })
+      .catch((err) => {
+        setLoading(false);
+        alert(err.response.data.message);
+      });
+  };
+
+  const createPost = (event) => {
+    event.preventDefault();
+    axios
+      .post(`${BASE_URL}/posts`, form, headers)
+      .then((response) => {
+        clear();
+        getPost();
       })
       .catch((err) => {
         alert(err.response.data.message);
       });
   };
 
+  const carregarMais = () => {
+    setPage((page) => page + 1);
+    getPost();
+  };
+
   return (
     <div>
-      <h1>Feed</h1>
-      <Flex direction={"column"}>
-        {posts.map((data) => {
-          return (
-            <Box
-              margin={"5px"}
-              key={data.id}
-              borderWidth="1px"
-              borderRadius="12px"
-              borderColor={"#e0e0e0"}
-              bg={"#fbfbfb"}
-              p={"9px"}
-            >
-              <Badge borderRadius="full" px="2" colorScheme="teal">
-                Enviado por :{data.title}
-              </Badge>
+      <form onSubmit={createPost}>
+        <Flex direction={"column"} p={"5px"}>
+          <Input
+            required
+            name={"title"}
+            type="text"
+            placeholder="Digite seu titulo"
+            value={form.title}
+            onChange={onChange}
+            bg={"#ededed"}
+            borderRadius="12px"
+            border={"none"}
+            p={"1em"}
+            fontSize="18px"
+            mb="10px"
+          />
 
-              <Box
-                mt="2"
-                mb="4"
-                fontWeight="semibold"
-                as="h4"
-                lineHeight="tight"
-                isTruncated
-              >
-                {data.body}
-              </Box>
-              <Flex direction={"row"} justify={"space-between"}>
-                <Flex direction={"row"}>
-                  <Button
-                    leftIcon={<FontAwesomeIcon icon={faArrowUp} />}
-                  ></Button>
-                  <p>{data.voteSum}</p>
-                  <Button
-                    leftIcon={<FontAwesomeIcon icon={faArrowDown} />}
-                  ></Button>
-                </Flex>
-                <Box>
-                  <Button
-                    leftIcon={<FontAwesomeIcon icon={faMessage} />}
-                  ></Button>
-                </Box>
-              </Flex>
-            </Box>
-          );
-        })}
-      </Flex>
+          <Textarea
+            required
+            name={"body"}
+            type="text"
+            placeholder="Digite seu post"
+            value={form.body}
+            onChange={onChange}
+            bg={"#ededed"}
+            borderRadius="12px"
+            border={"none"}
+            p={"1em"}
+            resize={"none"}
+            fontSize="18px"
+            rows={5}
+            mb="10px"
+          />
+
+          <Button
+            type="submit"
+            bgGradient="linear(to-r, green.200, pink.500)"
+            color={"white"}
+            fontWeight={"bold"}
+            border={"none"}
+            borderRadius={"12px"}
+            colorScheme={"gray"}
+          >
+            Postar
+          </Button>
+          <Divider
+            mt={"1em"}
+            border={"none"}
+            h={"1px"}
+            bgGradient="linear(to-r, green.200, pink.500)"
+          />
+        </Flex>
+      </form>
+
+      {loading ? (
+        <Stack>
+          <Skeleton height="120px" />
+          <Skeleton height="120px" />
+          <Skeleton height="120px" />         
+        </Stack>
+      ) : (
+        <Box>
+          <Flex direction={"column"}>
+            {posts.map((data, index) => {
+              return <PostCard key={index} getPosts={getPost} data={data} />;
+            })}
+          </Flex>
+
+          <Flex justify={"center"}>
+            <Button
+              bgGradient="linear(to-r, green.200, pink.500)"
+              color={"white"}
+              fontWeight={"bold"}
+              border={"none"}
+              borderRadius={"12px"}
+              colorScheme={"none"}
+              onClick={carregarMais}
+            >
+              Carregar mais
+            </Button>
+          </Flex>
+        </Box>
+      )}
     </div>
   );
 };
