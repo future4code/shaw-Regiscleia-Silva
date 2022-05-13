@@ -24,6 +24,7 @@ import {
 import { useParams } from "react-router-dom";
 import { PostStateContext } from "../global/PostStateContext";
 import PostCard from "./PostCard/PostCard";
+import Logo from "./Logo/Logo";
 
 const Pagepost = () => {
   const params = useParams();
@@ -104,7 +105,8 @@ const Pagepost = () => {
   };
 
   return (
-    <Flex direction={"column"}>
+    <Flex direction={"column"} w={["90vw", "90vw", "60vw", "50vw"]}>
+      <Logo />
       <PostCard data={selectedPost} />
 
       <form onSubmit={createComment}>
@@ -133,7 +135,8 @@ const Pagepost = () => {
             fontWeight={"bold"}
             border={"none"}
             borderRadius={"12px"}
-            colorScheme={'none'}
+            colorScheme={"none"}
+            _hover={{ opacity: "0.5" }}
             isLoading={responding}
           >
             Responder

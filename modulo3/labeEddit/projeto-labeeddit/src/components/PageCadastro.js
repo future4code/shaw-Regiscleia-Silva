@@ -13,6 +13,7 @@ import {
   Flex,
   Input,
 } from "@chakra-ui/react";
+import Logo from "./Logo/Logo";
 
 const PageCadastro = () => {
   useUnProtectsPage();
@@ -44,99 +45,109 @@ const PageCadastro = () => {
   };
 
   return (
-    <Flex direction={"column"} padding={"2em"}>
-      <Box as="h1" fontSize={"36px"} fontWeight={"bold"}>
-        Olá, boas vindas ao LabEddit ;)
-      </Box>
-      <form onSubmit={onClickCadastrar}>
-        <Flex direction={"column"} mt="30vh">
-          <Input
-            backgroundColor={"white"}
-            borderRadius={"4px"}
-            fontSize={"0.9em"}
-            fontWeight={"400"}
-            mb={"10px"}
-            name={"username"}
-            value={form.username}
-            onChange={onChange}
-            placeholder="Nome"
-            required
-            type={"text"}
-          />
+    <Flex
+      direction={"column"}
+      align={"center"}
+      justify={"center"}
+      padding={"1em"}
+      h={"100vh"}
+    >
+      <Flex direction={"column"} w={["90vw", "90vw", "50vw", "50vw"]}>
+        <Box as="h1" fontSize={"36px"} fontWeight={"bold"} alignSelf={'center'}>
+          Olá, boas vindas ao LabEddit ;)
+        </Box>
+        <Logo/>
+        <form onSubmit={onClickCadastrar}>
+          <Flex direction={"column"}>
+            <Input
+              backgroundColor={"white"}
+              borderRadius={"4px"}
+              fontSize={"0.9em"}
+              fontWeight={"400"}
+              mb={"10px"}
+              name={"username"}
+              value={form.username}
+              onChange={onChange}
+              placeholder="Nome"
+              required
+              type={"text"}
+            />
 
-          <Input
-            backgroundColor={"white"}
-            borderRadius={"4px"}
-            fontSize={"0.9em"}
-            fontWeight={"400"}
-            mb={"10px"}
-            required
-            name={"email"}
-            type="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={onChange}
-          />
+            <Input
+              backgroundColor={"white"}
+              borderRadius={"4px"}
+              fontSize={"0.9em"}
+              fontWeight={"400"}
+              mb={"10px"}
+              required
+              name={"email"}
+              type="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={onChange}
+            />
 
-          <Input
-            backgroundColor={"white"}
-            borderRadius={"4px"}
-            fontSize={"0.9em"}
-            fontWeight={"400"}
-            mb={"50px"}
-            required
-            name={"password"}
-            placeholder="Senha"
-            type="password"
-            value={form.password}
-            onChange={onChange}
-            min={8}
-            max={30}
-            title={"minimo 8 caracteres"}
-          />
+            <Input
+              backgroundColor={"white"}
+              borderRadius={"4px"}
+              fontSize={"0.9em"}
+              fontWeight={"400"}
+              mb={"50px"}
+              required
+              name={"password"}
+              placeholder="Senha"
+              type="password"
+              value={form.password}
+              onChange={onChange}
+              min={8}
+              max={30}
+              title={"minimo 8 caracteres"}
+            />
 
-          <Box as="p" mb={"10px"}>
-            Ao continuar, você concorda com o nosso{" "}
-            <Box
-              as="span"
-              color="blue.600"
-              fontSize="sm"
-              fontWeight={"bold"}
-              cursor={"pointer"}
-            >
-              Contrato de usuário
-            </Box>{" "}
-            e nossa{" "}
-            <Box
-              as="span"
-              color="blue.600"
-              fontSize="sm"
-              fontWeight={"bold"}
-              cursor={"pointer"}
-            >
-              Politíca de Privacidade
+            <Box as="p" mb={"10px"}>
+              Ao continuar, você concorda com o nosso{" "}
+              <Box
+                as="span"
+                color="blue.600"
+                fontSize="sm"
+                fontWeight={"bold"}
+                cursor={"pointer"}
+              >
+                Contrato de usuário
+              </Box>{" "}
+              e nossa{" "}
+              <Box
+                as="span"
+                color="blue.600"
+                fontSize="sm"
+                fontWeight={"bold"}
+                cursor={"pointer"}
+              >
+                Politíca de Privacidade
+              </Box>
             </Box>
-          </Box>
 
-          <Checkbox required color={"pink.500"}>
-            Eu concordo em receber emails sobre coisas legais no LabEddit
-          </Checkbox>
+            <Checkbox required color={"pink.500"}>
+              Eu concordo em receber emails sobre coisas legais no LabEddit
+            </Checkbox>
 
-          <Button
-            type="submit"
-            bgGradient="linear(to-r, green.200, pink.500)"
-            color={"white"}
-            fontWeight={"bold"}
-            border={"none"}
-            borderRadius={"12px"}
-            colorScheme={"pink.500"}
-            mt={"20px"}
-            isLoading={loading}
-          >
-            Cadastrar
-          </Button>
-        </Flex>
-      </form>
+            <Button
+              type="submit"
+              bgGradient="linear(to-r, green.200, pink.500)"
+              color={"white"}
+              fontWeight={"bold"}
+              border={"none"}
+              borderRadius={"12px"}
+              colorScheme={"pink.500"}
+              mt={"20px"}
+              _hover={{ opacity: "0.5" }}
+              isLoading={loading}
+            >
+              Cadastrar
+            </Button>
+          </Flex>
+        </form>
+      </Flex>
     </Flex>
   );
 };

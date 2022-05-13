@@ -22,6 +22,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useForm from "../hooks/useForm";
 import { PostStateContext } from "../global/PostStateContext";
 import PostCard from "./PostCard/PostCard";
+import Logo from "../components/Logo/Logo";
 
 const Feed = () => {
   //useProtectsPage();
@@ -74,14 +75,15 @@ const Feed = () => {
   };
 
   return (
-    <div>
+    <Flex direction={"column"} w={["90vw", "90vw", "60vw", "50vw"]}>
+      <Logo />
       <form onSubmit={createPost}>
         <Flex direction={"column"} p={"5px"}>
           <Input
             required
             name={"title"}
             type="text"
-            placeholder="Digite seu titulo"
+            placeholder="Escreva seu título..."
             value={form.title}
             onChange={onChange}
             bg={"#ededed"}
@@ -96,7 +98,7 @@ const Feed = () => {
             required
             name={"body"}
             type="text"
-            placeholder="Digite seu post"
+            placeholder="Escreva seu post..."
             value={form.body}
             onChange={onChange}
             bg={"#ededed"}
@@ -116,7 +118,8 @@ const Feed = () => {
             fontWeight={"bold"}
             border={"none"}
             borderRadius={"12px"}
-            colorScheme={"gray"}
+            colorScheme={"none"}
+            _hover={{ opacity: "0.5" }}
           >
             Postar
           </Button>
@@ -133,7 +136,7 @@ const Feed = () => {
         <Stack>
           <Skeleton height="120px" />
           <Skeleton height="120px" />
-          <Skeleton height="120px" />         
+          <Skeleton height="120px" />
         </Stack>
       ) : (
         <Box>
@@ -158,7 +161,7 @@ const Feed = () => {
           </Flex>
         </Box>
       )}
-    </div>
+    </Flex>
   );
 };
 
