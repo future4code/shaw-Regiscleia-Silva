@@ -1,0 +1,16 @@
+{
+  "name": "first-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "daemon": "^1.1.0",
+    "init": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "tsc  && node ./build/index.js" 
+  },
+  "author": "",
+  "license": "ISC"
+}
