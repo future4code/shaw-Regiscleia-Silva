@@ -86,12 +86,33 @@ app.get("/users/saldo", (req, res) => {
       throw new Error("Usuario não encontrado");
     }
 
-    res.status(201).send({saldo: buscarSaldo.saldo});
+    res.status(201).send({ saldo: buscarSaldo.saldo });
   } catch (error: any) {
     res.status(statusCode).send({ message: error.message });
   }
 });
 
+// Adicionar saldo
+app.put("/user/addSaldo", (req, res) => {
+  try {
+    const { nome, cpf, saldo } = req.body;
+
+    // Validar se campos estão preenchidos
+
+    const alterar: any = arrayUsers.map((user) => {
+      if (user.nome === nome && user.cpf === cpf) {
+        user.saldo = user.saldo + saldo;
+      }
+      return user;
+    });
+
+    res.status(201).send(alterar);
+  } catch (error: any) {
+    res.status(statusCode).send({ message: error.message });
+  }
+});
+
+// criar Conta
 app.post("/users", (req, res) => {
   try {
     const { nome, cpf, nascimento, saldo, extrato, valor, data, descricao } =

@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "df3d47bc-0103-46e0-9400-89e40a7b8603",
+		"name": "sistema-bancario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20353230"
+	},
+	"item": [
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"nome\": \"charlie\",\r\n    \"cpf\":\"221625635864\",\r\n    \"nascimento\": \"10/12/2019\",\r\n    \"saldo\": 0,\r\n    \"extrato\":[{\r\n        \"valor\":90.99,\r\n       \"data\":\"03/05/2022\",\r\n        \"descricao\":\"cobasi\"\r\n    }]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "useraddSaldo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"marcelo\",\r\n    \"cpf\": \"221625631478\",\r\n    \"saldo\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/user/addSaldo",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"user",
+						"addSaldo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usersSaldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/users/saldo",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users",
+						"saldo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
