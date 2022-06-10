@@ -1,0 +1,42 @@
+
+POST  http://localhost:3003/user
+Content-Type:  application/json
+
+{
+    "name": "Marcelo",
+    "nickname": "Ma",
+    "email": "marcelo@email.com"
+}
+
+###
+
+GET http://localhost:3003/user/001
+
+###
+PUT http://localhost:3003/user/edit/001
+content-type:  application/json
+
+{
+    "name": "charlie",
+    "nickname": "chacha"
+}
+
+###
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "titulo": "correr",
+    "descricao":"ir no portão correr",
+    "data_limite": "20/06/2022",
+    "id_usuario":"001"
+}
+
+###
+GET http://localhost:3003/task/0wiN5NdvPfkRtITQs3Bx
+Content-Type: application/json
+
+
+
+
+
