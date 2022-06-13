@@ -3,20 +3,18 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useForm from "../hooks/useForm";
 import styled from "styled-components";
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 const ContainerPrincipal = styled.div`
-display: flex;
-flex-direction: center;
- 
-input{
-  align-center: center;
-  height: 20em;
-  widht: 3em;
-}
-`
+  display: flex;
+  flex-direction: center;
 
-
+  input {
+    align-center: center;
+    height: 20em;
+    widht: 3em;
+  }
+`;
 
 const aluno = "regiscleia-dias-shaw";
 
@@ -56,8 +54,7 @@ export const LoginPage = () => {
   };
 
   return (
-    
-      <ContainerPrincipal>
+    <ContainerPrincipal>
       <h2>Login ADM</h2>
       <form onSubmit={cadastrar}>
         <input
@@ -76,12 +73,12 @@ export const LoginPage = () => {
           onChange={onChange}
           type="password"
           required
-          
         />
-        <Button colorScheme='blue' onClick={pageVoltar}>Voltar </Button>
+        <Button colorScheme="blue" onClick={pageVoltar}>
+          Voltar{" "}
+        </Button>
         <Button>Entrar</Button>
       </form>
-      </ContainerPrincipal>
-   
+    </ContainerPrincipal>
   );
 };
