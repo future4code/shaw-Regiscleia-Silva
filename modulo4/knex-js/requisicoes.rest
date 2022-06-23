@@ -1,0 +1,18 @@
+GET http://localhost:3003/actor/006
+###
+GET http://localhost:3003/actor?gender=female
+
+
+
+
+###
+PUT  http://localhost:3003/actor
+Content-Type: application/json
+{
+    "id":"001",
+    "salary": 560000
+}
+
+###
+
+DELETE   http://localhost:3003/actor/002
