@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "8b9d3c17-b552-4495-9dcc-51eab3fe26b2",
+		"name": "lista de tarefas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20353230"
+	},
+	"item": [
+		{
+			"name": "listUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:3003/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todastarefas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "novatarefa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"id\": 5,\r\n    \"title\": \"fugiat veniam minus\",\r\n    \"completed\": false\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/novatarefa",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"novatarefa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tarefasIncompletas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/incompletos",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"incompletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editarstatus",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/editarstatus/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"editarstatus",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "detetatarefas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/detetatarefas/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"detetatarefas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ltodosUsersID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/todosUsers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"todosUsers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statuscompletos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/completos",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"completos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
