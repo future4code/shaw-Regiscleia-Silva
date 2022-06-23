@@ -1,0 +1,4 @@
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/users?order=type&pagina=1
