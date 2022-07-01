@@ -6,10 +6,10 @@ export class HashManege {
     const salt = await bcrypt.genSalt(rounds);
     return bcrypt.hash(String(text), String(salt));
   }
-}
 
-export class Compare {
-  async(text: string, hash: string): Promise<boolean> {
-    return bcrypt.compare(text, hash);
-  }
+
+  public async compare (text: string, hash: string): Promise<boolean> {
+    return bcrypt.compare(String(text), String(hash));
+  
 }
+  }

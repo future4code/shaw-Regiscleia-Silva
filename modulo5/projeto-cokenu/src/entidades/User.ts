@@ -6,23 +6,20 @@ export class User {
     private password: string
   ) {}
 
-  public getId(){
-    return this.id
+  public getId() {
+    return this.id;
   }
-  public getname(){
-    return this.name
+  public getName() {
+    return this.name;
   }
-  public getEmail(){
-    return this.email
+  public getEmail() {
+    return this.email;
   }
-  public getPassword(){
-    return this.password
-  }
- 
-  static userModel(data:any):User{
-    return new User(data.id, data.name, data.email, data.password)
+  public getPassword() {
+    return this.password;
   }
 
+  static userModel(data: any): User {
+    return new User(data.id, data.name, data.email, data.password);
+  }
 }
-
-

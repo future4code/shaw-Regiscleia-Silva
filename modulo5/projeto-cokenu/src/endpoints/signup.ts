@@ -29,9 +29,9 @@ export async function signup(req: Request, res: Response) {
     await UserData.newUser(insertDB);
 
     const authetication = new Autheticator();
-    const token: string = authetication.generate({id});
+    const token: string = authetication.generate({ id });
 
-    res.send({ message: "usuario cadastrado", token }).status(200);
+    res.send({ access_token: token }).status(200);
   } catch (error: any) {
     res.status(400).send(error.message);
   }
