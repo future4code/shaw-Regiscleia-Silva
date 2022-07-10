@@ -1,5 +1,5 @@
 import { compare } from "bcryptjs";
-import { LoginData } from "../data/loginData";
+import { LoginData } from "../data/LoginData";
 import { UserData } from "../data/UserData";
 import { IdGenerator } from "../services/generetorId";
 import { Autheticator } from "../services/generetorToken";
@@ -8,7 +8,7 @@ import { loginDTO } from "../types/loginDTO";
 
 export class LoginBusiness {
   constructor(
-    private loginData : LoginData,
+    private loginData: LoginData,
     private hashManege: HashManege,
     private authenticator: Autheticator,
     private genereitorId: IdGenerator
@@ -20,10 +20,16 @@ export class LoginBusiness {
     if (!email || !password) {
       throw new Error("preenchimento obrigatorio");
     }
-    const hashPassword = await this.hashManege.hash(password);
-    const userDB = this.loginData.findByPassword( password);
 
-    const compareResult = await compare(password,(await userDB).password);
+    const userDB = await this.loginData.findByEmail(email);
+
+    if (!userDB) {
+      throw new Error("User not found");
+    }
+
+    const hashPassword = await this.hashManege.hash(password);
+
+    const compareResult = await compare(password, userDB.password);
 
     if (!compareResult) {
       throw new Error("Invalid password");
@@ -34,5 +40,6 @@ export class LoginBusiness {
       throw new Error("id invalido");
     }
     const token = this.authenticator.generate({ id });
+    return token;
   };
 }

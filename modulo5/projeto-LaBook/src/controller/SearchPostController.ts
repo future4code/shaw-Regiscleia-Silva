@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
+import { SearchPostBusiness } from "../business/SearchPostBusiness";
 
-export class SearchPostBusiness{
+export class SearchPostController {
+  constructor(private searchPostBusiness: SearchPostBusiness) {}
 
-
-    searchPost = async (req:Request ,res:Response ) =>{
-        const id = req.params.id
-        
-        
-    }
+  
 }

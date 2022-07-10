@@ -1,11 +1,7 @@
-export class SearchPostBusiness{
-    constructor(){}
+import { searchPostData } from "../data/SearchPostData";
+
+export class SearchPostBusiness {
+  constructor(private searchPostdata: searchPostData) {}
 
 
-
-    searchPost =async(id:string) => {
-        if (!id) {
-            throw new Error("necessario um Id");
-          }
-    }
 }

@@ -15,6 +15,7 @@ export class UserBusiness {
     private authenticator: Autheticator
   ) {}
   signup = async (input: signupDTO) => {
+    
     const { name, email, password } = input;
 
     if (!name || !email || !password) {
@@ -23,15 +24,15 @@ export class UserBusiness {
 
     const registeredUser = await this.userData.findByEmail(email);
     if (registeredUser) {
-      throw new Error("");
+      throw new Error("email ja existente");
     }
     const id = this.genereitorId.generate();
 
     if (!id) {
-      throw new Error("");
+      throw new Error("id incorreto");
     }
 
-    const hashPassword = await this.hashManege.hash(password as string);
+    const hashPassword = await this.hashManege.hash(password);
 
     const user = new User(id, name, email, hashPassword);
     await this.userData.insert(user);

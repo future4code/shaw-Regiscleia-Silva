@@ -8,7 +8,7 @@ export class Post {
     private id: string,
     public photo: string,
     public description: string,
-    public date_create: Date,
+    public date_create:Date,
     public role: Role
   ) {}
 }

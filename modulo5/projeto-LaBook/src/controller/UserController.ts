@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserBusiness } from "../business/useBusiness";
+import { UserBusiness } from "../business/UseBusiness";
 import { signupDTO } from "../types/signupDTO";
 
 export class UserController {
@@ -15,7 +15,7 @@ export class UserController {
     };
     try {
       const token = await this.userBusiness.signup(input);
-      res.send(this.signup).status(200);
+      res.send({access_token: token}).status(200);
     } catch (error: any) {
       res.send({ message: error.message }).status(404);
     }
