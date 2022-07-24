@@ -1,10 +1,10 @@
-export const home = (navigate)=>{
+export const goToHome = (navigate)=>{
     navigate('/')
 
 }
-export const detalhes = (navigate)=>{
-    nagivate('/detalhes')
+export const gotToDetalhes = (navigate, id)=>{
+    navigate(`/detalhes/${id}`)
 }
-export const filtros = ()=>{
+export const goToFiltros = (navigate)=>{
     navigate('/filtros')
 }
