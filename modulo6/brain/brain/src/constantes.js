@@ -1,1 +1,1 @@
-export const  BaseUrl = "http://https://brainn-api-loterias.herokuapp.com/api/v1"
+export const  BaseUrl = "http://brainn-api-loterias.herokuapp.com/api/v1"
