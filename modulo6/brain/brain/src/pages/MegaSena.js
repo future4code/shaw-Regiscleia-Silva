@@ -1,100 +1,96 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { BaseUrl } from "../constantes";
-import {
-  Select,
-  Text,
-  Stack,
-  MenuButton,
-  Menu,
-  MenuList,
-  MenuItem,
-  Button,
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+
+import { Select, Text, Box, Flex, Image, Grid, Stack } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
-import {
-  goDiaDeSorte,
-  golotoFacil,
-  goLotoMania,
-  goMega,
-  goQuina,
-  goTime,
-} from "../routes/codineitor";
+
 import ContextLoterias from "../global/GlobalContext";
+import trevo from "../imagens/trevo.png";
+import { Headers } from "./Headers";
+import moment from "moment";
+
+moment.locale("pt-br");
 
 export const MegaSena = () => {
   const navigate = useNavigate();
 
-  const { concurso, jogosLotericos, getConcursos } =
+  const { concurso, jogosLotericos, getConcursos, getConcursoData } =
     useContext(ContextLoterias);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getConcursoData("2359");
+  }, []);
 
   return (
-    <div>
-      <Flex  justify={"space-around"}>
-        <Box  p="15%" bg="#6BEFA3">
-          <Menu flexDirection={"column"}>
-            {({ loterias }) => (
-              <>
-                <MenuButton   isActive={loterias} as={Button}>
-                  {loterias ? "Close" : "Loterias"}
-                </MenuButton>
-                <MenuList>
-                  <MenuItem onClick={() => goMega(navigate)}>MegaSena</MenuItem>
-                  <MenuItem onClick={() => goQuina(navigate)}>Quina</MenuItem>
-                  <MenuItem onClick={() => goTime(navigate)}>
-                    TimeMania
-                  </MenuItem>
-                  <MenuItem onClick={() => goLotoMania(navigate)}>
-                    LotoMania
-                  </MenuItem>
-                  <MenuItem onClick={() => golotoFacil(navigate)}>
-                    LotoFacil
-                  </MenuItem>
-                  <MenuItem onClick={() => goDiaDeSorte(navigate)}>
-                    Dia de Sorte
-                  </MenuItem>
-                </MenuList>
-              </>
-            )}
-          </Menu>
+    <Flex direction={{ base: "column", md: "row" }} h={"100vh"} w={"100vw"}>
+      <Flex
+        bg="#6BEFA3"
+        direction={"column"}
+        justify={"space-between"}
+        align={"center"}
+        p={10}
+        minW={"400px"}
+      >
+        {/* <Box m={"10px"}> */}
+        <Headers />
+        {/* </Box> */}
+        <Flex alignSelf={"flex-start"}>
+          <Image w={"35px"} h={"35px"} src={trevo}></Image>
+          <Text
+            // mt={"400px"}
+            // m={"auto"}
+            // ml={"100px"}
+            fontSize={"30px"}
+            fontWeight={700}
+            color={"white"}
+            fontFamily={" Montserrat"}
+          >
+            MEGA-SENA
+          </Text>
+        </Flex>
 
-          <Text>MegaSena</Text>
-          <Text>{concurso.data}</Text>
-        </Box>
-
-        <Box p="15%" bg="green.50">
-          <Stack direction="column">
-            <Box
-              display={"-webkit-inline-box"}
-              justifyContent="center"
-              align="center"
-              py={12}
-              
-            >
-              {concurso.numeros.map((numero) => {
-                return (
-                  <Box
-                mb={'100px'}
-                  bg={"white"}
-                  ml ={"10px"}
-                  p={"20px"}
-                  border={"1px solid black"}
-                  borderRadius={"50%"}
-                 
-                  key={numero.id}
-                  >
-                    {numero}
-                  </Box>
-                );
-              })}
-            </Box>
-          </Stack>
+        <Box color={"white"}>
+          {/* <Text fontFamily={" Montserrat"} align={"center"} mt={"280px"}> */}
+          <Text>Concurso</Text>
+          <Text fontWeight={"bold"}>
+            {concurso.id} - {moment(concurso.data).format("L")}
+          </Text>
+          {/* </Text> */}
         </Box>
       </Flex>
-    </div>
+
+      <Flex
+        p={5}
+        bg="lightgray"
+        pos={"relative"}
+        justifyContent="center"
+        align="center"
+        h={"100vh"}
+        w={"100vw"}
+      >
+        <Box as="div" className="corner"></Box>
+
+        <Flex flexWrap={"wrap"} zIndex={5}>
+          {concurso.numeros.map((numero) => {
+            return (
+              <Flex
+                // mb={"95px"}
+                bg={"white"}
+                ml={"10px"}
+                mb={"10px"}
+                h={"50px"}
+                w={"50px"}
+                justify={"center"}
+                align={"center"}
+                borderRadius={"50%"}
+                key={numero.id}
+                fontWeight="bold"
+              >
+                {numero}
+              </Flex>
+            );
+          })}
+        </Flex>
+      </Flex>
+    </Flex>
   );
 };

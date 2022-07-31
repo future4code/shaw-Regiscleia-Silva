@@ -9,6 +9,7 @@ const GlobalState = (props) => {
   const [concurso, setConcurso] = useState({ data: "", numeros: [] });
 
   useEffect(() => {
+    jogosLotericos();
     getConcursos();
   }, []);
 
@@ -58,6 +59,7 @@ const GlobalState = (props) => {
     concurso,
     setConcurso,
     setLoterias,
+    getConcursoData
   };
   return (
     <div>

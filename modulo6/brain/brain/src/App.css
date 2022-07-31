@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap');
+
 .App {
   text-align: center;
 }
@@ -34,5 +36,24 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.corner::before{
+  content: "";
+  background: lightgray;
+  width: 200px;
+  height: 100vh;
+  position: absolute;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  top: 0;
+  left: -85px;
+  z-index: 4;
+}
+
+@media screen and (max-width: 768px) {
+  .corner {
+    display: none;
   }
 }
