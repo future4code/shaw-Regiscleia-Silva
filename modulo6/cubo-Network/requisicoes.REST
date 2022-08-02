@@ -2,9 +2,9 @@ POST  http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name":"Marcelo",
-    "lastName": "Carvalho",
-    "participation":50
+    "name":"João",
+    "lastName": "Santos",
+    "participation":"50"
 }
 
 ###

@@ -12,7 +12,7 @@ export class SignupBusiness {
       id,
       signup.name,
       signup.lastName,
-      signup.participation
+      signup.participation 
     );
   }
   public search = async (name: string) => {

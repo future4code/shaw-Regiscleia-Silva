@@ -11,9 +11,17 @@ export class SignupController {
       if (!name || !lastName || !participation) {
      throw new Error("campos Obrigatorios");
       }
-      if(typeof name !== 'string') 
+      if(typeof name !== 'string' ) 
             {
                 throw new Error("Campo 'name' apenas letras")
+            }
+            if(typeof lastName !== 'string' ) 
+            {
+                throw new Error("Campo 'lastName' apenas letras")
+            }
+            if(typeof participation !== 'string' ) 
+            {
+                throw new Error("Campo 'participation' apenas numeros")
             }
       const input: SignupDTO = {
         name: req.body.name,

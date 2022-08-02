@@ -21,10 +21,11 @@ export class SignupDataBase extends BaseDataBase {
 
   public async searchName(name:string){
     try {
+        console.log("regis")
       let response = await this.getConnection()
       .select('*')
       .from(SignupDataBase.Table_name)
-      .where(`"${name}"`)
+      .where({name})
       return response; 
     } catch (error:any) {
       throw new Error(error.sqlMessage || error.message)
