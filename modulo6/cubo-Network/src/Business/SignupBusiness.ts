@@ -15,9 +15,9 @@ export class SignupBusiness {
       signup.participation 
     );
   }
-  public search = async (name: string) => {
+  public search = async () => {
     const searchNameData = new SignupDataBase();
-    const result = await searchNameData.searchName(name);
+    const result = await searchNameData.searchName();
     return result;
   };
 }

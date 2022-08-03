@@ -2,11 +2,11 @@ POST  http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name":"João",
+    "name":"Ana",
     "lastName": "Santos",
     "participation":"50"
 }
 
 ###
-GET http://localhost:3003/user/search?name=Regiscleia
+GET http://localhost:3003/user/search
 

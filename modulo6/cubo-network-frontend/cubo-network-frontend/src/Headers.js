@@ -10,10 +10,16 @@ import {
   FormLabel,
   Input,
   Button,
-  HStack
+  HStack,
 } from "@chakra-ui/react";
 
 import { baseUrl } from "./constantes";
+import { useEffect } from "react";
+
+/* useEffect(() => {
+  ()
+}, []); */
+
 
 export const Headers = () => {
   const [form, onChange, clear] = UseForm({
@@ -36,13 +42,13 @@ export const Headers = () => {
 
   return (
     <div>
-        
-      {/*  <Grid templateColumns="repeat(4, 1fr)" gap={2}>
-        <FormControl isRequired>
-          <GridItem w="100%" h="20" bg="blue.500"/>
-           <Input
-           
-            w={"15em"}
+      <HStack w={"100%"} h={"150px"} bg={"blue.500"}>
+        <FormControl m={"150px"} isRequired>
+          <Input
+            bg={"white"}
+            h={"50px"}
+            m={"5px"}
+            w={"250px"}
             placeholder="Fist name"
             name="name"
             type={"text"}
@@ -50,83 +56,46 @@ export const Headers = () => {
             onChange={onChange}
             pattern={"^ . {5,}$"}
             border={""}
-          />  
-          
-          
+          />
 
-          <GridItem w="100%" h="20" bg="blue.500" />
-          
           <Input
-            w={"15em"}
+            m={"5px"}
+            h={"50px"}
+            bg={"white"}
+            w={"250px"}
             placeholder="Last name"
-            name="LastName"
+            name="lastName"
             type={"text"}
-            value={form.LastName}
+            value={form.lastName}
             onChange={onChange}
             pattern={"^ . {3,}$"}
           />
-
-          <GridItem w="100%" h="20" bg="blue.500" />
-         
           <Input
-            w={"15em"}
+            m={"5px"}
+            bg={"white"}
+            h={"50px"}
+            w={"250px"}
             placeholder="Participation"
-            name="Participation"
+            name="participation"
             type={"text"}
             value={form.participation}
             onChange={onChange}
             pattern={"^ . {2,}$"}
           />
-          <GridItem w="100%" h="20" bg="blue.500" />
-          <Button>send</Button>
+          <Button
+            onClick={onClickCadastrar}
+            bg={"blue.500"}
+            border={"1px"}
+            alignSelf={"center"}
+            color={"white"}
+            fontSize={"25px"}
+            h={"50px"}
+            w={"150px"}
+          >
+            SEND
+          </Button>
         </FormControl>
-      </Grid> */}
- 
-
-
-
-      <HStack w={"100%"} h={"150px"} bg ={"blue.500"}>
-      <FormControl m={"150px"} isRequired>
-      <Input
-      bg={"white"}
-     m={"5px"}
-           w={"15em"}
-           placeholder="Fist name"
-           name="name"
-           type={"text"}
-           value={form.name}
-           onChange={onChange}
-           pattern={"^ . {5,}$"}
-           border={""}
-         />  
-         
-      <Input
-       m={"5px"}
-      bg={"white"}
-            w={"15em"}
-            placeholder="Last name"
-            name="LastName"
-            type={"text"}
-            value={form.LastName}
-            onChange={onChange}
-            pattern={"^ . {3,}$"}
-          />
-          <Input
-           m={"5px"}
-          bg={"white"}
-            w={"15em"}
-            placeholder="Participation"
-            name="Participation"
-            type={"text"}
-            value={form.participation}
-            onChange={onChange}
-            pattern={"^ . {2,}$"}
-          />
-           <Button>send</Button>
-          </FormControl>
       </HStack>
     </div>
   );
 };
-
-

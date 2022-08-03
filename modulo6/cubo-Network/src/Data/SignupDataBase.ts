@@ -19,14 +19,14 @@ export class SignupDataBase extends BaseDataBase {
   }
 
 
-  public async searchName(name:string){
+  public async searchName(){
     try {
         console.log("regis")
       let response = await this.getConnection()
       .select('*')
       .from(SignupDataBase.Table_name)
-      .where({name})
-      return response; 
+      
+      return response
     } catch (error:any) {
       throw new Error(error.sqlMessage || error.message)
     }

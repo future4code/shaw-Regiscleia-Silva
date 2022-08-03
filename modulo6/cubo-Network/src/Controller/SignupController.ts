@@ -42,14 +42,10 @@ export class SignupController {
 
 
 search = async(req:Request, res:Response)=>{
-    const searchName = req.query.name as string
+    
     try{
-        if(!searchName){
-            throw new Error("Escreva o nome do usuario")
-
-        }
         const business = new SignupBusiness()
-        const result = await business.search(searchName)
+        const result = await business.search()
         res.status(200).send({result})
 
     }catch(error:any){
