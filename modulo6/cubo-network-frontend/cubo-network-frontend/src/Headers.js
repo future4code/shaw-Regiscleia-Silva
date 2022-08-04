@@ -21,7 +21,7 @@ import { useEffect } from "react";
 }, []); */
 
 
-export const Headers = () => {
+export const Headers = (props) => {
   const [form, onChange, clear] = UseForm({
     name: "",
     lastName: "",
@@ -34,6 +34,7 @@ export const Headers = () => {
       .then((Response) => {
         clear();
         alert("usuario cadastrado");
+        props.onSaveAction();
       })
       .catch((err) => {
         console.log(err);

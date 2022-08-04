@@ -8,12 +8,14 @@ import {
   Th,
   Thead,
   Tr,
+ 
 } from "@chakra-ui/table";
-import { Grid, GridItem, Box, Flex } from "@chakra-ui/react";
+import { Grid, GridItem, Box, Flex,  Text, } from "@chakra-ui/react";
 import axios from "axios";
 import { useRef, useState, useEffect } from "react";
 import { baseUrl } from "./constantes";
 import { VictoryBar, VictoryPie } from "victory";
+import { Headers } from "./Headers";
 
 export const Page = () => {
   // const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
@@ -44,9 +46,17 @@ export const Page = () => {
       });
   };
 
+  const updateList = ()=> {
+    listaDeUsuarios();
+  };
+
   return (
-    <Flex>
-      <TableContainer alignItems={"center"} m={"10px"} border={"1px"} overflowY ={"none"} overflowX h={"50%"} w={"50%"}>
+    <div>
+        <Headers onSaveAction={updateList}/>
+        <Text mt={"10px"} fontWeight={"bold"} align={"center"} fontSize={"40px"} >Dados</Text>
+    <Flex mt={"70px"}>
+        
+      <TableContainer  m={"40px"} border={"1px"} overflowY ={"none"} overflowX h={"50%"} w={"50%"}>
         <Table h={"10px"} w={"10px"} variant="striped" colorScheme="teal">
           <Thead>
             <Tr>
@@ -77,12 +87,14 @@ export const Page = () => {
       
         innerRadius={50}
         style={{ labels: { fontSize: 10, fontWeight: "bold" } }}
-        colorScale={["gren","blue", "gold", "red", "pink", "violet", "navy"]}
+        colorScale={["green","blue", "gold", "red", "pink", "violet", "navy", "yellow", "gray", "tomato", "orange"]}
         origin={{ y: 130 }}
         padding={130}
         
         data={dadosGraficos}
       />
+     
     </Flex>
+    </div>
   );
 };

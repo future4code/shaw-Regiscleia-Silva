@@ -7,10 +7,12 @@ import { Page } from './Page';
 
 
 function App() {
+
+
   return (
     <ChakraProvider>
-      <Headers />
-      <Page/>
+      {/* <Headers /> */}
+      <Page />
       </ChakraProvider>
   );
 }
