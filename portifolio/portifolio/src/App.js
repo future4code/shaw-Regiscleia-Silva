@@ -1,6 +1,7 @@
 
 import './App.css';
 import { ChakraProvider } from '@chakra-ui/react'
+import { PaginaPrincipal } from './PaginaPrincipal';
 
 function App() {
   return (
