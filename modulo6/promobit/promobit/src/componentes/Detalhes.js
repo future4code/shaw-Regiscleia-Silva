@@ -11,7 +11,9 @@ import {
   HStack,
   Grid,
   GridItem,
+  Button,
 } from "@chakra-ui/react";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 import { moment } from "moment";
 
 export const Detalhes = () => {
@@ -123,9 +125,13 @@ export const Detalhes = () => {
             {" "}
             SINOPSE <br />
           </Text>
+          <CircularProgress value={detalhes.vote_average * 10} color='green.400'>
+  <CircularProgressLabel>{detalhes.vote_average.toFixed(1)}</CircularProgressLabel>
+</CircularProgress>
           <Text fontWeight={"none"} mt="20px">
             {detalhes.overview}
           </Text>
+          
           {crew.slice(0, 5).map((cw) => {
             return (
               <Box
@@ -145,7 +151,7 @@ export const Detalhes = () => {
         <GridItem pl="2" bg="#2D0C5E" color="white" area={"footer"}></GridItem>
       </Grid>
      
-      <Text color="white">{detalhes.popularity}</Text>
+      //<Text color="white">{detalhes.popularity}</Text>
        
       <Text
         fontWeight={"bold"}
@@ -234,6 +240,8 @@ export const Detalhes = () => {
             </Box>
           );
         })}
+
+        <Button>carregando..</Button>
       </Flex>
       ;
     </div>
