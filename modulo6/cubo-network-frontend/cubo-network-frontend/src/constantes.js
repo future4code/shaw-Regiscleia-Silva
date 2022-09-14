@@ -1,0 +1,1 @@
+export const baseUrl = 'https://fullstack-cubo-network.herokuapp.com'
